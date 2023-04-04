@@ -143,6 +143,7 @@
                 window.addEventListener("devicemotion", handleMotion);
                 window.addEventListener("deviceorientation", handleOrientation);
                 screen.orientation.addEventListener("change", handleScreenOrientation);
+                document.getElementById("ScreenOrientation").innerHTML = "Screen Orientation: " + screen.orientation.type
                 document.getElementById("start_demo").innerHTML = "Stop demo";
                 is_running = true;
             }
