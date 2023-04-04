@@ -134,7 +134,7 @@
             if (is_running) {
                 window.removeEventListener("devicemotion", handleMotion);
                 window.removeEventListener("deviceorientation", handleOrientation);
-                screen.removeEventListener("change", handleScreenOrientation);
+                screen.orientation.removeEventListener("change", handleScreenOrientation);
                 demo_button.innerHTML = "Start demo";
                 demo_button.classList.add('btn-success');
                 demo_button.classList.remove('btn-danger');
