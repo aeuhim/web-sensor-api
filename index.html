@@ -40,9 +40,9 @@
             <li>Z-axis: <span id="Gyroscope_z">0</span><span>°/s</span></li>
         </ul>
         
-        <h4>Device Orientation</h4>
+        <h4>Screen Orientation</h4>
         <ul>
-            <li id="DeviceOrientation">Device Orientation: 0</li>
+            <li id="ScreenOrientation">Screen Orientation: 0</li>
         </ul>
 
         <h4>Device light</h4>
@@ -79,24 +79,25 @@
             counterElement.innerHTML = eventCount + 1;
         }
         
-        function handleDeviceOrientation() {
-            const element = document.getElementById("DeviceOrientation")
+        function handleScreenOrientation() {
+            const element = document.getElementById("ScreenOrientation")
             switch (screen.orientation.type) {
                 case "landscape-primary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    element.innerHTML = "Screen Orientation: " + screen.orientation.type
                     break
                 case "landscape-secondary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    element.innerHTML = "Screen Orientation: " + screen.orientation.type
                     break
                 case "portrait-primary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    element.innerHTML = "Screen Orientation: " + screen.orientation.type
                     break
                 case "portrait-secondary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    element.innerHTML = "Screen Orientation: " + screen.orientation.type
                     break
                 default:
-                    element.innerHTML = "Device Orientation: " + "not-supported"
+                    element.innerHTML = "Screen Orientation: " + "not-supported"
                     break
+            }
         }
 
         function updateFieldIfNotNull(fieldName, value, precision = 10) {
@@ -141,7 +142,7 @@
             } else {
                 window.addEventListener("devicemotion", handleMotion);
                 window.addEventListener("deviceorientation", handleOrientation);
-                screen.orientation.addEventListener("change", handleDeviceOrientation);
+                screen.orientation.addEventListener("change", handleScreenOrientation);
                 document.getElementById("start_demo").innerHTML = "Stop demo";
                 is_running = true;
             }
