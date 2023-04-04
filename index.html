@@ -78,6 +78,26 @@
             let eventCount = parseInt(counterElement.innerHTML)
             counterElement.innerHTML = eventCount + 1;
         }
+        
+        function handleDeviceOrientation() {
+            const element = document.getElementById("DeviceOrientation")
+            switch (screen.orientation.type) {
+                case "landscape-primary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                case "landscape-secondary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                case "portrait-primary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                case "portrait-secondary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                default:
+                    element.innerHTML = "Device Orientation: " + "not-supported"
+                    break
+        }
 
         function updateFieldIfNotNull(fieldName, value, precision = 10) {
             if (value != null)
@@ -113,6 +133,7 @@
             if (is_running) {
                 window.removeEventListener("devicemotion", handleMotion);
                 window.removeEventListener("deviceorientation", handleOrientation);
+                screen.removeEventListener("change", handleDeviceOrientation);
                 demo_button.innerHTML = "Start demo";
                 demo_button.classList.add('btn-success');
                 demo_button.classList.remove('btn-danger');
@@ -120,6 +141,7 @@
             } else {
                 window.addEventListener("devicemotion", handleMotion);
                 window.addEventListener("deviceorientation", handleOrientation);
+                screen.orientation.addEventListener("change", handleDeviceOrientation);
                 document.getElementById("start_demo").innerHTML = "Stop demo";
                 is_running = true;
             }
@@ -140,28 +162,6 @@
         window.addEventListener('userproximity', function (event) {
             document.getElementById("UserProximity").innerHTML = "UserProximity: " + event.near;
         });
-        
-        screen.orientation.addEventListener("change", function (event) {
-            const element = document.getElementById("DeviceOrientation")
-            switch (screen.orientation.type) {
-                case "landscape-primary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
-                    break
-                case "landspace-secondary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
-                    break
-                case "portrait-primary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
-                    break
-                case "portrait-secondary":
-                    element.innerHTML = "Device Orientation: " + screen.orientation.type
-                    break
-                default:
-                    element.innerHTML = "Device Orientation: " + "Not supported"
-                    break
-            }
-                    
-        })
     </script>
 </body>
 
