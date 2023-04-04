@@ -39,10 +39,15 @@
             <li>Y-axis: <span id="Gyroscope_y">0</span><span>°/s</span></li>
             <li>Z-axis: <span id="Gyroscope_z">0</span><span>°/s</span></li>
         </ul>
+        
+        <h4>Device Orientation</h4>
+        <ul>
+            <li id="DeviceOrientation">Device Orientation: 0</li>
+        </ul>
 
         <h4>Device light</h4>
         <ul>
-            <li id="DeviceLight">AmbientLight current Value: 0 Max: 0 Min: 0</li>
+            <li id="DeviceLight">Ambient Light current Value: 0 Max: 0 Min: 0</li>
         </ul>
 
         <h4>Light level</h4>
@@ -52,7 +57,7 @@
 
         <h4>Device proximity</h4>
         <ul>
-            <li id="DeviceProximit">DeviceProximity current Value: 0 Max: 0 Min: 0</li>
+            <li id="DeviceProximity">DeviceProximity current Value: 0 Max: 0 Min: 0</li>
         </ul>
 
         <h4>User proximity</h4>
@@ -135,6 +140,28 @@
         window.addEventListener('userproximity', function (event) {
             document.getElementById("UserProximity").innerHTML = "UserProximity: " + event.near;
         });
+        
+        screen.orientation.addEventListener("change", function (event) {
+            const element = document.getElementById("DeviceOrientation")
+            switch (screen.orientation.type) {
+                case "landscape-primary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                case "landspace-secondary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                case "portrait-primary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                case "portrait-secondary":
+                    element.innerHTML = "Device Orientation: " + screen.orientation.type
+                    break
+                default:
+                    element.innerHTML = "Device Orientation: " + "Not supported"
+                    break
+            }
+                    
+        })
     </script>
 </body>
 
